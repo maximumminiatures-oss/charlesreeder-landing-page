@@ -12,9 +12,14 @@ desktop.ini
 *.swo
 *~
 
-# Keys — never commit these
+# Dependencies and logs
+node_modules/
+*.log
+
+# Keys - never commit these
 *.pem
 *.key
+id_ed25519
 
 # Environment files
 .env

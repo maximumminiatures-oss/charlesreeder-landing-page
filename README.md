@@ -1,52 +1,45 @@
-# Assignment 1: Personal Landing Page
+# CS 506 - Week 3 Portfolio Integration
 
-A starter template for your personal landing page deployed to AWS S3.
+This repository now includes the Week 3 starter merge and integrates the lightbox feature into an existing portfolio page.
 
-## Getting Started
+## Workflow Used
 
-1. Click **"Use this template"** on GitHub to create your own copy
-2. Clone your new repo locally
-3. Open in Cursor or VS Code
-4. Deploy to S3 as-is to verify your setup works
-5. Customize with your own content
-6. Re-deploy to S3
-
-## What's Included
-
-```
-├── index.html        ← Your landing page
-├── style.css         ← Responsive grid styles
-├── .gitignore        ← Keeps junk files out of your repo
-├── README.md         ← This file
-└── images/
-    ├── cat-sleeping.jpg  ← Placeholder — replace with your photo
-    ├── dog-happy.jpg     ← Placeholder — replace with your photo
-    ├── cat-curious.jpg   ← Placeholder — replace with your photo
-    └── dog-sitting.jpg   ← Placeholder — replace with your photo
+```bash
+git remote add course https://github.com/lhhunghimself/506-week3-2026.git
+git fetch course
+git checkout -b week-3
+git merge course/main --allow-unrelated-histories
 ```
 
-## Customizing
+## Run Locally (EC2 or Local Machine)
 
-Replace the placeholder images with your own photos, update the bio and links in `index.html`, and modify `style.css` to match your taste. Use AI to help — good prompts to try:
+```bash
+npm install
+npm run serve
+```
 
-- "Make this a dark theme"
-- "Add a hover zoom effect on the photos"
-- "Change the grid to a masonry layout"
-- "Add a skills section below the gallery"
+Open `http://localhost:8080` or your EC2 public IP and matching port.
 
-## Uploading to S3
+## Project Structure
 
-Upload `index.html`, `style.css`, and the `images/` folder to your S3 bucket. **Do NOT upload `.git`, `.gitignore`, or `README.md`** — those are for your repo, not your website.
+```text
+.
+|- index.html
+|- style.css
+|- script.js
+|- js/lightbox.js
+|- css/lightbox.css
+|- images/
+|- LIGHTBOX-NOTES.md
+`- INTEGRATION-NOTES.md
+```
 
-## Image Tips
+## Week 3 Deliverables
 
-Resize photos to under 500 KB before uploading:
+1. `LIGHTBOX-NOTES.md` answers the code-reading prompts from Task 2.
+2. `INTEGRATION-NOTES.md` documents integration choices from Task 3.
+3. `index.html`, `js/lightbox.js`, and `css/lightbox.css` provide the integrated lightbox behavior on personal images.
 
-- **Mac:** `sips --resampleWidth 1000 photo.jpg`
-- **Linux/WSL:** `convert photo.jpg -resize 1000x photo_resized.jpg`
+## Deploy to S3
 
-Keep filenames simple, lowercase, no spaces.
-
-## Submission
-
-Do not submit this template unmodified. Your site must have your own photos and bio.
+Upload the updated site files to your existing bucket and preserve paths for `css/` and `js/` so references resolve correctly.

@@ -1,8 +1,26 @@
 # CS 506 - Week 3 Portfolio Integration
 
-This repository now includes the Week 3 starter merge and integrates the lightbox feature into an existing portfolio page.
+This repo ingests the Week 3 starter and integrates the lightbox feature into an existing portfolio page that uses personal artwork images.
 
-## Workflow Used
+## What's Here
+
+```text
+506_personal_page/
+├── index.html                 # Portfolio page with integrated gallery and lightbox markup
+├── style.css                  # Existing site theme and responsive layout
+├── script.js                  # Legacy lightbox script from earlier iteration (not used by Week 3 path)
+├── js/
+│   └── lightbox.js            # Week 3 starter-based lightbox logic (adapted to personal gallery)
+├── css/
+│   └── lightbox.css           # Week 3 overlay styling, adjusted to avoid layout conflicts
+├── images/                    # Personal images (plus starter sample svgs retained from merge)
+├── package.json               # Includes serve script
+├── package-lock.json
+├── LIGHTBOX-NOTES.md          # Task 2 deliverable
+└── INTEGRATION-NOTES.md       # Task 3 deliverable
+```
+
+## Starter Ingest Workflow Used
 
 ```bash
 git remote add course https://github.com/lhhunghimself/506-week3-2026.git
@@ -11,35 +29,37 @@ git checkout -b week-3
 git merge course/main --allow-unrelated-histories
 ```
 
-## Run Locally (EC2 or Local Machine)
+## Run The Demo
 
 ```bash
 npm install
 npm run serve
 ```
 
-Open `http://localhost:8080` or your EC2 public IP and matching port.
+Then open http://localhost:8080 (or on EC2, open the same port in your security group and browse to http://YOUR-EC2-IP:PORT).
 
-## Project Structure
+## Instructor README Checklist Status
 
-```text
-.
-|- index.html
-|- style.css
-|- script.js
-|- js/lightbox.js
-|- css/lightbox.css
-|- images/
-|- LIGHTBOX-NOTES.md
-`- INTEGRATION-NOTES.md
-```
+1. Ingest starter with upstream merge pattern: Completed.
+2. Keep starter lightbox file path and read/analyze it for Task 2: Completed via js/lightbox.js and LIGHTBOX-NOTES.md.
+3. Integrate lightbox into own landing page using own images: Completed (gallery uses personal images in images/).
+4. Keep css and js folder structure for deployment: Completed (css/lightbox.css and js/lightbox.js).
+5. Add notes deliverables for grading: Completed (LIGHTBOX-NOTES.md and INTEGRATION-NOTES.md).
+6. Merge to default branch and tag v0.1.0: Pending final release step.
 
-## Week 3 Deliverables
+## Notes On Images
 
-1. `LIGHTBOX-NOTES.md` answers the code-reading prompts from Task 2.
-2. `INTEGRATION-NOTES.md` documents integration choices from Task 3.
-3. `index.html`, `js/lightbox.js`, and `css/lightbox.css` provide the integrated lightbox behavior on personal images.
+- Instructor sample images are not required for grading content and can be ignored.
+- Personal images are the images used by the integrated gallery.
 
-## Deploy to S3
+## Deploy To S3
 
-Upload the updated site files to your existing bucket and preserve paths for `css/` and `js/` so references resolve correctly.
+Upload/update the following while preserving folder structure:
+
+- index.html
+- style.css
+- css/lightbox.css
+- js/lightbox.js
+- images/
+
+If folder structure is flattened in S3, relative paths will fail and the lightbox assets may 404.

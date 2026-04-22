@@ -1,52 +1,65 @@
-# Assignment 1: Personal Landing Page
+# CS 506 - Week 3 Portfolio Integration
 
-A starter template for your personal landing page deployed to AWS S3.
+This repo ingests the Week 3 starter and integrates the lightbox feature into an existing portfolio page that uses personal artwork images.
 
-## Getting Started
+## What's Here
 
-1. Click **"Use this template"** on GitHub to create your own copy
-2. Clone your new repo locally
-3. Open in Cursor or VS Code
-4. Deploy to S3 as-is to verify your setup works
-5. Customize with your own content
-6. Re-deploy to S3
-
-## What's Included
-
-```
-├── index.html        ← Your landing page
-├── style.css         ← Responsive grid styles
-├── .gitignore        ← Keeps junk files out of your repo
-├── README.md         ← This file
-└── images/
-    ├── cat-sleeping.jpg  ← Placeholder — replace with your photo
-    ├── dog-happy.jpg     ← Placeholder — replace with your photo
-    ├── cat-curious.jpg   ← Placeholder — replace with your photo
-    └── dog-sitting.jpg   ← Placeholder — replace with your photo
+```text
+506_personal_page/
+├── index.html                 # Portfolio page with integrated gallery and lightbox markup
+├── style.css                  # Existing site theme and responsive layout
+├── script.js                  # Legacy lightbox script from earlier iteration (not used by Week 3 path)
+├── js/
+│   └── lightbox.js            # Week 3 starter-based lightbox logic (adapted to personal gallery)
+├── css/
+│   └── lightbox.css           # Week 3 overlay styling, adjusted to avoid layout conflicts
+├── images/                    # Personal images (plus starter sample svgs retained from merge)
+├── package.json               # Includes serve script
+├── package-lock.json
+├── LIGHTBOX-NOTES.md          # Task 2 deliverable
+└── INTEGRATION-NOTES.md       # Task 3 deliverable
 ```
 
-## Customizing
+## Starter Ingest Workflow Used
 
-Replace the placeholder images with your own photos, update the bio and links in `index.html`, and modify `style.css` to match your taste. Use AI to help — good prompts to try:
+```bash
+git remote add course https://github.com/lhhunghimself/506-week3-2026.git
+git fetch course
+git checkout -b week-3
+git merge course/main --allow-unrelated-histories
+```
 
-- "Make this a dark theme"
-- "Add a hover zoom effect on the photos"
-- "Change the grid to a masonry layout"
-- "Add a skills section below the gallery"
+## Run The Demo
 
-## Uploading to S3
+```bash
+npm install
+npm run serve
+```
 
-Upload `index.html`, `style.css`, and the `images/` folder to your S3 bucket. **Do NOT upload `.git`, `.gitignore`, or `README.md`** — those are for your repo, not your website.
+Then open http://localhost:8080 (or on EC2, open the same port in your security group and browse to http://YOUR-EC2-IP:PORT).
 
-## Image Tips
+## Instructor README Checklist Status
 
-Resize photos to under 500 KB before uploading:
+1. Ingest starter with upstream merge pattern: Completed.
+2. Keep starter lightbox file path and read/analyze it for Task 2: Completed via js/lightbox.js and LIGHTBOX-NOTES.md.
+3. Integrate lightbox into own landing page using own images: Completed (gallery uses personal images in images/).
+4. Keep css and js folder structure for deployment: Completed (css/lightbox.css and js/lightbox.js).
+5. Add notes deliverables for grading: Completed (LIGHTBOX-NOTES.md and INTEGRATION-NOTES.md).
+6. Merge to default branch and tag v0.1.0: Pending final release step.
 
-- **Mac:** `sips --resampleWidth 1000 photo.jpg`
-- **Linux/WSL:** `convert photo.jpg -resize 1000x photo_resized.jpg`
+## Notes On Images
 
-Keep filenames simple, lowercase, no spaces.
+- Instructor sample images are not required for grading content and can be ignored.
+- Personal images are the images used by the integrated gallery.
 
-## Submission
+## Deploy To S3
 
-Do not submit this template unmodified. Your site must have your own photos and bio.
+Upload/update the following while preserving folder structure:
+
+- index.html
+- style.css
+- css/lightbox.css
+- js/lightbox.js
+- images/
+
+If folder structure is flattened in S3, relative paths will fail and the lightbox assets may 404.
